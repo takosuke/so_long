@@ -66,10 +66,12 @@ typedef struct s_rect
 
 t_sprite	*init_sprite(t_data *data, char *path);
 void	get_map_size(t_data *data);
+//INPUT
 int		handle_keypress(int keysym, t_data *data);
+//RENDERING
 void	img_pix_put(t_img *img, int x, int y, int color);
-//void	render_background(t_data *data);
 void	render_background(t_data *data);
+void	render_items(t_data *data);
 int		render(t_data *data);
 
 #endif
