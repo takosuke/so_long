@@ -75,5 +75,6 @@ void	img_pix_put(t_img *img, int x, int y, int color);
 void	render_background(t_data *data);
 void	render_items(t_data *data);
 int		render(t_data *data);
+void	render_player(t_data *data);
 
 #endif

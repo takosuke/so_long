@@ -5,7 +5,8 @@ int	render(t_data *data)
 	if (data->win_ptr == NULL)
 		return (1);
 	render_background(data);
-//	render_items(data);
+	render_items(data);
+	render_player(data);
 
 	return (0);
 }
