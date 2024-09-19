@@ -1,0 +1,24 @@
+/* XPM */
+static const char *gem[] = {
+/* columns rows colors chars-per-pixel */
+"15 13 5 1 ",
+"  c #4C2562",
+". c #BB58CC",
+"X c #E6AFF0",
+"o c gray99",
+"O c None",
+/* pixels */
+"OOOOOOOOOOOOOOO",
+"OOOO       OOOO",
+"OOO ooXXX.. OOO",
+"OO ooXXXXX.. OO",
+"O ooXXXXoooo. O",
+"O   ......XXX O",
+"OO   ....XXX OO",
+"OOO   ...XX OOO",
+"OOOO  ..XX OOOO",
+"OOOOO  XX OOOOO",
+"OOOOOO X OOOOOO",
+"OOOOOOO OOOOOOO",
+"OOOOOOOOOOOOOOO"
+};

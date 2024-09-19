@@ -1,0 +1,28 @@
+/* XPM */
+static const char *platform[] = {
+/* columns rows colors chars-per-pixel */
+"16 16 6 1 ",
+"  c #322C43",
+". c #693F55",
+"X c #964B4C",
+"o c #B36950",
+"O c #DE9A60",
+"+ c None",
+/* pixels */
+" .............. ",
+" OOOOOOooOOOOOO ",
+" OOOooooooooOOO ",
+" ooooXXXXoooooo ",
+" XXXXXXXXXXXXXX ",
+"                ",
+"  .. .... ... . ",
+"                ",
+" ..  ......  .. ",
+" ..  ......  .. ",
+" ..  .    .  .. ",
+" ..XX. .. .XX.. ",
+"                ",
+" XXXXXXXXXXXXXX ",
+"  ............  ",
+"+               "
+};

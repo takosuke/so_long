@@ -1,0 +1,26 @@
+/* XPM */
+static const char *crate[] = {
+/* columns rows colors chars-per-pixel */
+"16 16 4 1 ",
+"  c #693F55",
+". c #964B4C",
+"X c #B36950",
+"o c #DE9A60",
+/* pixels */
+"                ",
+" XoXooooooooXoX ",
+" X XXXXXXXXXX X ",
+" .............. ",
+"                ",
+" ... ..  .. ... ",
+" .X. .. XX. .X. ",
+" XXX   XX.. XXX ",
+" XXX .XXX   XXX ",
+" .X. .X. .. .X. ",
+" ... ..  .. ... ",
+"                ",
+" XXXooooooooXXX ",
+" XoXXXXXXXXXXoX ",
+" . .......... . ",
+"                "
+};
