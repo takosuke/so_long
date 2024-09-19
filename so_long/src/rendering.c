@@ -8,29 +8,23 @@ void	img_pix_put(t_img *img, int x, int y, int color)
 	*(int *)pixel= color;
 }
 
-void	render_tiles(t_data *data)
+void	render_background(t_data *data)
 {
-//	void	*img;
-//	void	*img2;
-//	char	*img_path ="./media/wooden.xpm";
-//	char	*img_path2 ="./media/rock.xpm";
-//	int		img_width;
-//	int		img_height;
-//	int		img2_width;
-//	int		img2_height;
 	size_t		i;
 	size_t		j;
 	char	*line;
 	int		fd;
 	t_sprite	*wall;
 	t_sprite	*floor;
+	t_sprite	*collectible;
+	t_sprite	*exit;
 
 
 	j = 0;
 	wall = init_sprite(data, WALL_IMG_PATH);
 	floor = init_sprite(data, FLOOR_IMG_PATH);
-//	img = mlx_xpm_file_to_image(data->mlx_ptr, img_path, &img_width, &img_height);
-//	img2 = mlx_xpm_file_to_image(data->mlx_ptr, img_path2, &img2_width, &img2_height);
+	collectible = init_sprite(data, COLLECTIBLE_IMG_PATH);
+	exit = init_sprite(data, EXIT_IMG_PATH);
 	fd = open(data->map_path, O_RDONLY);
 	line = get_next_line(fd);
 	while (j < data->base_height)
@@ -38,10 +32,12 @@ void	render_tiles(t_data *data)
 		i = 0;
 		while (i < data->base_width)
 		{
-			if (line[i] == '0')
-				mlx_put_image_to_window(data->mlx_ptr, data->win_ptr, wall->img, i * TILE_WIDTH, j * TILE_HEIGHT);
-			else if (line[i] == '1')
+			if (line[i] == '0' || line[i] == 'P' || line[i] == 'C')
 				mlx_put_image_to_window(data->mlx_ptr, data->win_ptr, floor->img, i * TILE_WIDTH, j * TILE_HEIGHT);
+			else if (line[i] == '1')
+				mlx_put_image_to_window(data->mlx_ptr, data->win_ptr, wall->img, i * TILE_WIDTH, j * TILE_HEIGHT);
+			else if (line[i] == 'E')
+				mlx_put_image_to_window(data->mlx_ptr, data->win_ptr, exit->img, i * TILE_WIDTH, j * TILE_HEIGHT);
 			i++;
 		}
 		j++;

@@ -10,17 +10,12 @@
 
 # define TILE_WIDTH 16
 # define TILE_HEIGHT 16
-# define WINDOW_WIDTH 800
-# define WINDOW_HEIGHT 600
 # define MLX_ERROR 1
-# define RED_PIXEL 0x00FF0000
-# define GREEN_PIXEL 0x0000FF00
-# define WHITE_PIXEL 0x00FAFAFA
-# define WALL_IMG_PATH "./media/rock.xpm"
-# define FLOOR_IMG_PATH "./media/wooden.xpm"
-// crap
-# define TEST_BG "./media/bg.xpm"
-# define TEST_ALPHA "./media/alpha.xpm"
+# define WALL_IMG_PATH "./media/wall.xpm"
+# define FLOOR_IMG_PATH "./media/floor.xpm"
+# define COLLECTIBLE_IMG_PATH "./media/collectible.xpm"
+# define EXIT_IMG_PATH "./media/exit.xpm"
+# define PLAYER_IMG_PATH "./media/player.xpm"
 
 typedef struct s_img
 {
@@ -74,7 +69,7 @@ void	get_map_size(t_data *data);
 int		handle_keypress(int keysym, t_data *data);
 void	img_pix_put(t_img *img, int x, int y, int color);
 //void	render_background(t_data *data);
-void	render_tiles(t_data *data);
+void	render_background(t_data *data);
 int		render(t_data *data);
 
 #endif
