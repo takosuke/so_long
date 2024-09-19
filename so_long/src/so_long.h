@@ -17,6 +17,14 @@
 # define EXIT_IMG_PATH "./media/exit.xpm"
 # define PLAYER_IMG_PATH "./media/player.xpm"
 
+/*
+typedef struct s_map
+{
+	char	**map;
+//	int		rem_items;;
+} t_map;
+*/
+
 typedef struct s_img
 {
 	void	*mlx_img;
@@ -44,6 +52,7 @@ typedef struct s_data
 	char	*map_path;
 	t_img	img;
 	int		offset;
+	char	**map;
 } t_data;
 
 typedef struct s_tile
@@ -55,17 +64,10 @@ typedef struct s_tile
 	void	*exit;
 } t_tile;
 
-typedef struct s_rect
-{
-	int		x;
-	int		y;
-	int		width;
-	int		height;
-	int		color;
-} t_rect;
-
 t_sprite	*init_sprite(t_data *data, char *path);
+//MAP
 void	get_map_size(t_data *data);
+void	init_map(t_data *data);
 //INPUT
 int		handle_keypress(int keysym, t_data *data);
 //RENDERING

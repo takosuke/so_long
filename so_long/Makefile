@@ -1,56 +1,33 @@
 NAME = so_long
+SRC = $(addprefix src/, input_handlers.c rendering.c map.c game.c init_game.c )
+#GNL_SRC = $(addprefix gnl/, gnl.c gnl_utils.c)
+#PRINTF_SRC = $(addprefix ft_printf/, ft_print_c.c ft_print_d.c ft_print_p.c ft_print_s.c ft_print_u.c ft_print_x.c ft_printf.c)
 LIBFT	= libft/libft.a
-CC = cc
-CFLAGS = -g -Wall -Wextra -Werror
+OBJ := $(SRC:%.c=%.o)
+#GNL_OBJ := $(GNL_SRC:%.c=%.o)
+#PRINTF_OBJ := $(PRINTF_SRC:%.c=%.o)
 
-ifeq ($(shell uname), Linux)
-	INCLUDES = -I/usr/include -Imlx
-else
-	INCLUDES = -I/opt/X11/include -Imlx
-endif
-
-RM = rm
-RMFLAG = -f
-
-MLX_DIR = ./mlx
-MLX_LIB = $(MLX_DIR)/libmlx_$(UNAME).a
-ifeq ($(shell uname), Linux)
-	MLX_FLAGS = -Lmlx -lmlx -L/usr/lib/X11 -lXext -lX11
-else
-	MLX_FLAGS = -Lmlx -lmlx -L/usr/X11/lib -lXext -lX11 -framework OpenGL -framework AppKit
-endif
-
-SRCS = \
-	src/input_handlers.c \
-	src/rendering.c \
-	src/map.c \
-	src/game.c \
-	src/init_game.c
-
-OBJS = $(SRCS:.c=.o)
+CCFLAGS = -g -Wextra -Wall -Werror
 
 all: $(LIBFT) $(MLX_LIB) $(NAME)
 
-.c.o:
-	$(CC) $(CFLAGS) -c -o $@ $< $(INCLUDES)
+$(NAME):$(OBJ)
+	gcc $(CCFLAGS) $^ -Lmlx -lmlx -L/usr/X11/lib -framework OpenGL -framework AppKit -o $(NAME) $(LIBFT) 
 
-$(NAME): $(OBJS)
-	$(CC) $(CFLAGS) -o $(NAME) $(LIBFT) $(OBJS) $(MLX_FLAGS)
+#debug: $(OBJ) $(GNL_OBJ) $(PRINTF_OBJ)
+#	gcc $(CCFLAGS) -fsanitize=address $^ -Lmlx -lmlx -framework OpenGL -framework AppKit -o $(NAME)
 
-$(LIBFT): 
-	$(info making libft?)
-	make -C ./libft
-
-$(MLX_LIB):
-	@make -C $(MLX_DIR)
+%.o: %.c
+	gcc $(CCFLAGS) -Imlx -I/opt/X11/include -Isrc -Ilibft -c $< -o $@
 
 clean:
-	$(RM) $(RMFLAG) $(OBJS)
+	rm -f $(OBJ) $(GNL_OBJ) $(PRINTF_OBJ)
 
 fclean: clean
-	$(RM) $(RMFLAG) $(NAME)
-	if [ -d "./mlx" ]; then make -C $(MLX_DIR) clean; fi
+	make clean -C mlx/
+	rm -f $(NAME)
+
+mlx:
+	@$(MAKE) re -C mlx/
 
 re: fclean all
-
-.PHONY: all clean run fclean re 

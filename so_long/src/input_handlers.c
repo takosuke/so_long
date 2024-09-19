@@ -20,7 +20,7 @@ int	handle_keypress(int keysym, t_data *data)
 	{
 		mlx_destroy_window(data->mlx_ptr, data->win_ptr);
 		data->win_ptr = NULL;
-		mlx_destroy_display(data->mlx_ptr);
+//		mlx_destroy_display(data->mlx_ptr);
 		free(data->mlx_ptr);
 		exit(0);
 	}
