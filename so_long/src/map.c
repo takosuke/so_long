@@ -24,12 +24,24 @@ void		get_map_size(t_data *data)
 	}
 }
 
+int		count_items(char *str)
+{
+	int		n;
+
+	n = 0;
+	while(*str)
+		if(*str == 'C')
+			n++;
+	return (n);
+}
+
 void	init_map(t_data *data)
 {
 	size_t		i;
 	char		*line;
 	int			fd;
 
+	data->rem_items = 0;
 	// move to a general init function?
 	get_map_size(data);
 	data->map = malloc((data->base_height + 1) * sizeof(char *));
@@ -39,11 +51,14 @@ void	init_map(t_data *data)
 	line = get_next_line(fd);
 	while (line)
 	{
+		data->rem_items += count_items(line);
 		data->map[i] = ft_strtrim(line, "\n");
 		free(line);
 		line = get_next_line(fd);
 		i++;
 	}
+	printf("NUM ITEMS: %d\n", data->rem_items);
 	data->map[i] = NULL;
 }
+
 

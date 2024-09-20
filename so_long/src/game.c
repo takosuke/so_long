@@ -15,6 +15,7 @@ int main(int argc, char **argv)
 {
 	t_data	data;
 
+	printf("HEY!");
 	data.map_path = argv[1];
 	if (argc > 1)
 	{

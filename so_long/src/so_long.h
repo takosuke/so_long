@@ -53,6 +53,8 @@ typedef struct s_data
 	t_img	img;
 	int		offset;
 	char	**map;
+	int		rem_items;
+	int		victory;
 } t_data;
 
 typedef struct s_tile
