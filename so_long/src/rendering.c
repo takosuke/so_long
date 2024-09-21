@@ -24,15 +24,14 @@ void	render_background(t_data *data)
 	exit = init_sprite(data, EXIT_IMG_PATH);
 	while (j < data->base_height)
 	{
+		printf("%s\n", data->map[j]);
 		i = 0;
 		while (i < data->base_width)
 		{
-			if (data->map[j][i] == '0' || data->map[j][i] == 'P' || data->map[j][i] == 'C')
+			if (data->map[j][i] == '0' || data->map[j][i] == 'P' || data->map[j][i] == 'C' || data->map[j][i] == 'E')
 				mlx_put_image_to_window(data->mlx_ptr, data->win_ptr, floor->img, i * TILE_WIDTH, j * TILE_HEIGHT);
 			else if (data->map[j][i] == '1')
 				mlx_put_image_to_window(data->mlx_ptr, data->win_ptr, wall->img, i * TILE_WIDTH, j * TILE_HEIGHT);
-			else if (data->map[j][i] == 'E')
-				mlx_put_image_to_window(data->mlx_ptr, data->win_ptr, exit->img, i * TILE_WIDTH, j * TILE_HEIGHT);
 			i++;
 		}
 		j++;
@@ -77,6 +76,28 @@ void	render_player(t_data *data)
 		{
 			if (data->map[j][i] == 'P')
 				mlx_put_image_to_window(data->mlx_ptr, data->win_ptr, player->img, i * TILE_WIDTH, j * TILE_HEIGHT);
+			i++;
+		}
+		j++;
+	}
+}
+
+void	render_exit(t_data *data)
+{
+	size_t		i;
+	size_t		j;
+	t_sprite	*exit;
+
+
+	j = 0;
+	exit = init_sprite(data, EXIT_IMG_PATH);
+	while (j < data->base_height)
+	{
+		i = 0;
+		while (i < data->base_width)
+		{
+			if (data->map[j][i] == 'E')
+				mlx_put_image_to_window(data->mlx_ptr, data->win_ptr, exit->img, i * TILE_WIDTH, j * TILE_HEIGHT);
 			i++;
 		}
 		j++;

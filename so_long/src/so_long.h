@@ -54,6 +54,8 @@ typedef struct s_data
 	int		offset;
 	char	**map;
 	int		rem_items;
+	int		player_pos[2];
+	int		num_moves;
 	int		victory;
 } t_data;
 
@@ -78,5 +80,6 @@ void	render_background(t_data *data);
 void	render_items(t_data *data);
 int		render(t_data *data);
 void	render_player(t_data *data);
+void	render_exit(t_data *data);
 
 #endif

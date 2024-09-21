@@ -7,6 +7,8 @@ int	render(t_data *data)
 	render_background(data);
 	render_items(data);
 	render_player(data);
+	if (data->victory)
+		render_exit(data);
 
 	return (0);
 }

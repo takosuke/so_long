@@ -30,8 +30,11 @@ int		count_items(char *str)
 
 	n = 0;
 	while(*str)
+	{
 		if(*str == 'C')
 			n++;
+		str++;
+	}
 	return (n);
 }
 
