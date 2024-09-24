@@ -14,14 +14,12 @@ void	render_background(t_data *data)
 	size_t		j;
 	t_sprite	*wall;
 	t_sprite	*floor;
-	t_sprite	*exit;
 
 	//let's init the sprites elsewhere so they don't have to be loaded every
 	//time
 	j = 0;
 	wall = init_sprite(data, WALL_IMG_PATH);
 	floor = init_sprite(data, FLOOR_IMG_PATH);
-	exit = init_sprite(data, EXIT_IMG_PATH);
 	while (j < data->base_height)
 	{
 		printf("%s\n", data->map[j]);

@@ -17,11 +17,9 @@ int main(int argc, char **argv)
 {
 	t_data	data;
 
-	printf("HEY!");
 	data.map_path = argv[1];
 	if (argc > 1)
 	{
-	//	get_map_size(&data);
 		init_map(&data);
 		printf("width: %zu height: %zu\n", data.base_width, data.base_height);
 	}
@@ -30,7 +28,9 @@ int main(int argc, char **argv)
 		printf("Must supply a map file\n");
 		exit(1);
 	}
-    data.mlx_ptr = mlx_init();
+	if (!check_map(&data))
+		exit(1);
+	data.mlx_ptr = mlx_init();
 	if (data.mlx_ptr == NULL)
 		return (MLX_ERROR);
 	data.win_ptr = mlx_new_window(data.mlx_ptr, TILE_WIDTH * data.base_width, TILE_HEIGHT * data.base_height, "I have opened a window");

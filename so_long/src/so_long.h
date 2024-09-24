@@ -5,7 +5,7 @@
 # include <stdio.h>
 # include <X11/X.h>
 # include <X11/keysym.h>
-# include "../mlx/mlx.h"
+# include "../mlx_linux/mlx.h"
 # include "../libft/libft.h"
 
 # define TILE_WIDTH 16
@@ -68,6 +68,12 @@ typedef struct s_tile
 	void	*exit;
 } t_tile;
 
+typedef struct  s_point
+{
+int           x;
+int           y;
+}               t_point;
+
 t_sprite	*init_sprite(t_data *data, char *path);
 //MAP
 void	get_map_size(t_data *data);
@@ -81,5 +87,10 @@ void	render_items(t_data *data);
 int		render(t_data *data);
 void	render_player(t_data *data);
 void	render_exit(t_data *data);
+//MAP CHECKING
+int	check_map_is_square(t_data *data);
+int	check_map_is_enclosed(t_data *data);
+int	check_map_elements(t_data *data);
+int	check_map(t_data *data);
 
 #endif
