@@ -7,6 +7,8 @@ OBJ := $(SRC:%.c=%.o)
 #GNL_OBJ := $(GNL_SRC:%.c=%.o)
 #PRINTF_OBJ := $(PRINTF_SRC:%.c=%.o)
 CC = clang
+MLXLIB = mlx/mlx.a
+
 
 CCFLAGS = -g -Wextra -Wall -Werror
 ifeq ($(shell uname), Linux)
@@ -42,7 +44,7 @@ fclean: clean
 	make clean -C ./libft
 	rm -f $(NAME)
 
-mlx:
+$(MLX_LIB):
 	@$(MAKE) re -C ./mlx_linux
 
 re: fclean all
