@@ -2,9 +2,10 @@
 
 int	check_map(t_data *data)
 {
-	if (!check_map_is_square(data) || !check_map_is_enclosed(data) || !check_map_elements(data))
-		return (0);
-	else
+    if (!check_map_is_square(data) || !check_map_is_enclosed(data) || !check_map_elements(data))
+//  if (!check_map_is_square(data) || check_map_is_enclosed(data))
+    return (0);
+  else
 		return (1);
 }
 
@@ -31,27 +32,27 @@ int	check_map_is_enclosed(t_data *data)
 {
 	size_t	i;
 	size_t	j;
-	size_t	error;
+	size_t	enclosed;
 
 	i = -1;
 	j = -1;
-	error = 0;
+	enclosed = 1;
 	while (data->map[++i])
 	{
 		if (i == 0 || i == data->base_height - 1)
 		{
 			while (data->map[i][++j])
 				if (data->map[i][j] != '1')
-					error = 1;
+					enclosed = 0;
 			j = -1;
 		}
 		else
 			if (data->map[i][0] != '1' || data->map[i][data->base_width - 1] != '1')
-				error = 1;
+				enclosed = 0;
 	}
-	if (error)
+	if (!enclosed)
 		perror("Map not enclosed");
-	return (error);
+	return (enclosed);
 }
 
 int	check_map_elements(t_data *data)
@@ -83,7 +84,7 @@ int	check_map_elements(t_data *data)
 	if (exit != 1 || items < 1 || player != 1)
 	{
 		perror("incorrect map elements");
-		return (1);
+		return (0);
 	}
-	return (0);
+	return (1);
 }

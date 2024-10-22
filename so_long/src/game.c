@@ -13,16 +13,8 @@ int	render(t_data *data)
 	return (0);
 }
 
-//int main(int argc, char **argv)
-int main()
+int main(int argc, char **argv)
 {
-	void *mlx;
-//	void *mlx_win;
-
-	mlx = mlx_init();
-	mlx_new_window(mlx, 800, 600, "poop");
-	mlx_loop(mlx);
-	/*
 	t_data	data;
 
 	data.map_path = argv[1];
@@ -37,7 +29,7 @@ int main()
 		exit(1);
 	}
 	if (!check_map(&data))
-		exit(1);
+		exit(0);
 	data.mlx_ptr = mlx_init();
 	if (data.mlx_ptr == NULL)
 		return (MLX_ERROR);
@@ -59,5 +51,4 @@ int main()
 //	mlx_destroy_display(data.mlx_ptr);
 	mlx_destroy_window(data.mlx_ptr, data.win_ptr);
     free(data.mlx_ptr);
-    */
 }

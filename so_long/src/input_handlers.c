@@ -86,25 +86,29 @@ void	move(t_data *data, int x, int y)
 	// optional - load a left facing sprite?(or move spritesheet)
 int	handle_keypress(int keysym, t_data *data)
 {
-	if (keysym == 0)
+	//if (keysym == 0)
+  if (keysym == XK_a)
 	{
 		printf("lef\n");
 		move(data, -1, 0);
 		render(data);	
 	}
-	if (keysym == 2)
+	//if (keysym == 2)
+  if (keysym == XK_d)
 	{
 		printf("RIGHT\n");
 		move(data, 1, 0);
 		render(data);	
 	}
-	if (keysym == 13)
+	//if (keysym == 13)
+  if (keysym == XK_w)
 	{
 		printf("up\n");
 		move(data, 0, -1);
 		render(data);	
 	}
-	if (keysym == 1)
+	//if (keysym == 1)
+  if (keysym == XK_s)
 	{
 		printf("down\n");
 		move(data, 0, 1);
